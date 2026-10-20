@@ -1,0 +1,74 @@
+spring:
+  application:
+    name: serviceflow-backend
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 15MB
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: Asia/Bangkok
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: never
+    include-exception: false
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: method
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when_authorized
+      probes:
+        enabled: true
+
+serviceflow:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:ServiceFlowSuperSecretSigningKeyForJwtTokensMustBeAtLeast256BitsLong!}
+      expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+      issuer: ${JWT_ISSUER:serviceflow-backend}
+    bootstrap-admin:
+      enabled: ${ADMIN_BOOTSTRAP_ENABLED:true}
+      username: ${ADMIN_USERNAME:admin}
+      email: ${ADMIN_EMAIL:admin@serviceflow.com}
+      password: ${ADMIN_PASSWORD:Admin@123456}
+      full-name: ${ADMIN_FULL_NAME:ผู้ดูแลระบบ}
+  storage:
+    type: ${STORAGE_TYPE:local}
+    photo-dir: ${PHOTO_STORAGE_DIR:${user.home}/serviceflow_storage/photos}
+    r2:
+      account-id: ${R2_ACCOUNT_ID:}
+      access-key-id: ${R2_ACCESS_KEY_ID:}
+      secret-access-key: ${R2_SECRET_ACCESS_KEY:}
+      bucket-name: ${R2_BUCKET_NAME:serviceflow-photos}
+      endpoint: ${R2_ENDPOINT:}
+

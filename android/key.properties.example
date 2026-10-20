@@ -1,0 +1,7 @@
+# Example keystore configuration for ServiceFlow Android Release Build
+# Copy this file to android/key.properties and replace with actual credentials
+# WARNING: NEVER commit key.properties or .jks files to version control!
+keyAlias=serviceflow_release
+keyPassword=REPLACE_WITH_YOUR_KEY_PASSWORD
+storeFile=../serviceflow-release.jks
+storePassword=REPLACE_WITH_YOUR_STORE_PASSWORD

@@ -1,0 +1,24 @@
+# Build and target artifacts
+target/
+*.jar
+*.war
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.classpath
+.project
+.settings/
+
+# Git and logs
+.git/
+.gitignore
+*.log
+
+# Documentation and temporary files
+*.md
+.DS_Store
+Thumbs.db

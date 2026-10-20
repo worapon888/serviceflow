@@ -1,0 +1,14 @@
+# ==============================================================================
+# ServiceFlow Backend - Staging Environment Configuration Profile
+# Active when SPRING_PROFILES_ACTIVE=staging
+# Inherits production-grade security, connection pooling, and fail-fast configurations
+# ==============================================================================
+spring:
+  config:
+    import: classpath:application-prod.yml
+
+serviceflow:
+  security:
+    staging:
+      dispatcher-password: ${DISPATCHER_PASSWORD:}
+      technician-password: ${TECHNICIAN_PASSWORD:}

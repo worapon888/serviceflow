@@ -1,0 +1,99 @@
+# ==========================================
+# Security, Secrets & Environment
+# ==========================================
+.env
+*.env
+*.env.*
+!*.env.example
+*.secret
+secrets/
+credentials.json
+keystore.properties
+*.jks
+*.keystore
+*.p8
+*.p12
+
+# ==========================================
+# Android & Local Properties
+# ==========================================
+local.properties
+**/local.properties
+android/local.properties
+android/.gradle/
+**/.gradle/
+/android/app/debug
+/android/app/profile
+/android/app/release
+android/captures/
+
+# ==========================================
+# Flutter / Dart
+# ==========================================
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+**/build/
+/coverage/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+**/ephemeral/
+.widget_preview/
+
+# Symbolication & Obfuscation
+app.*.symbols
+app.*.map.json
+
+# ==========================================
+# iOS / macOS
+# ==========================================
+ios/Pods/
+ios/.generated/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+*.class
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# Java / Spring Boot (serviceflow-backend)
+# ==========================================
+**/target/
+**/bin/
+**/out/
+serviceflow-backend/application-local.properties
+serviceflow-backend/application-local.yml
+serviceflow-backend/application-secret.properties
+serviceflow-backend/application-secret.yml
+/serviceflow-backend/storage/
+/serviceflow_storage/
+
+# ==========================================
+# Node / Web / IDE
+# ==========================================
+node_modules/
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+.atom/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# ==========================================
+# Logs & Generated Artifacts
+# ==========================================
+*.log
+window_dump.xml
+test_input.png
+/audit_*.png
+/emulator_*.png
+/screenshot.png

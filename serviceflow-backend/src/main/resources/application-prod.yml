@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      pool-name: ServiceFlow-HikariCP-Prod
+      maximum-pool-size: ${DB_POOL_MAX_SIZE:20}
+      minimum-idle: ${DB_POOL_MIN_IDLE:10}
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      leak-detection-threshold: 60000
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+server:
+  error:
+    include-message: never
+    include-binding-errors: never
+    include-stacktrace: never
+    include-exception: false
+
+management:
+  endpoint:
+    health:
+      show-details: never
+
+serviceflow:
+  security:
+    jwt:
+      # Mandatory: No default key in production. Missing JWT_SECRET triggers startup failure.
+      secret: ${JWT_SECRET}
+      expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+      issuer: ${JWT_ISSUER:serviceflow-backend}
+    bootstrap-admin:
+      # Disabled by default in production. Enable only for first-time provisioning.
+      enabled: ${ADMIN_BOOTSTRAP_ENABLED:false}
+      username: ${ADMIN_USERNAME:admin}
+      email: ${ADMIN_EMAIL:admin@serviceflow.com}
+      password: ${ADMIN_PASSWORD:}
+      full-name: ${ADMIN_FULL_NAME:System Administrator}
+  storage:
+    type: ${STORAGE_TYPE:local}
